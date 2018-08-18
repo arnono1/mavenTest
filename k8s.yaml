@@ -1,14 +1,16 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: jenkins-demo
+  name: jenkins-demo-git
   namespace: kube-ops
 spec:
   template:
     metadata:
       labels:
-        app: jenkins-demo
+        app: jenkins-demo-git
     spec:
+      terminationGracePeriodSeconds: 10
+      serviceAccountName: jenkins
       containers:
       - image: 192.168.57.89:5000/jenkins-demo:<BUILD_TAG>
         imagePullPolicy: IfNotPresent
