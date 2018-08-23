@@ -12,7 +12,7 @@ spec:
         app: myweb-tomcat78-<BUILD_TAG>
     spec:
       containers:
-      - image: 192.168.57.89:5000/centos-jdk8-tomcat7:v20180820
+      - image: 192.168.57.89:5000/myweb-tomcat78:<BUILD_TAG>
         name: myweb-tomcat78-<BUILD_TAG>
         resources:
           limits:
@@ -24,13 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tomcat-essdk-svc
+  name: myweb-tomcat78-svc-<BUILD_TAG>
 spec:
   ports:
-  - name: tomcat-essdk
+  - name: myweb-tomcat78
     port: 8080
     targetPort: 8080
-    nodePort: 32222
   selector:
-    app: tomcat-essdk
+    app: myweb-tomcat78-<BUILD_TAG>
   type: NodePort
