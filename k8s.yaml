@@ -1,12 +1,10 @@
-apiVersion: v1
-kind: ReplicationController
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
   name: myweb-tomcat78-<BUILD_TAG>
   namespace: kube-ops
 spec:
   replicas: 2
-  selector:
-    app: myweb-tomcat78-<BUILD_TAG>
   template:
     metadata:
       labels:
@@ -29,7 +27,6 @@ metadata:
   name: myweb-tomcat78-svc-<BUILD_TAG>
   namespace: kube-ops
 spec:
-  serviceAccountName: jenkins
   ports:
   - name: myweb-tomcat78
     port: 8080
