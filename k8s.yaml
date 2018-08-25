@@ -4,12 +4,14 @@ metadata:
   name: myweb-tomcat78-<BUILD_TAG>
   namespace: kube-ops
 spec:
+  serviceAccountName: jenkins
   replicas: 2
   template:
     metadata:
       labels:
         app: myweb-tomcat78-<BUILD_TAG>
     spec:
+      serviceAccountName: jenkins
       containers:
       - image: 192.168.57.89:5000/myweb-tomcat78:<BUILD_TAG>
         name: myweb-tomcat78-<BUILD_TAG>
@@ -26,6 +28,7 @@ metadata:
   name: myweb-tomcat78-svc-<BUILD_TAG>
   namespace: kube-ops
 spec:
+  serviceAccountName: jenkins
   ports:
   - name: myweb-tomcat78
     port: 8080
