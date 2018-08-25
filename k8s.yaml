@@ -16,7 +16,7 @@ spec:
         name: myweb-tomcat78-<BUILD_TAG>
         resources:
           limits:
-            cpu: "2"
+            cpu: "1"
             #memory: 4Gi
         ports:
         - containerPort: 8080
@@ -27,6 +27,7 @@ metadata:
   name: myweb-tomcat78-svc-<BUILD_TAG>
   namespace: kube-ops
 spec:
+  serviceAccountName: jenkins
   ports:
   - name: myweb-tomcat78
     port: 8080
